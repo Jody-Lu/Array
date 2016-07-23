@@ -12,7 +12,7 @@ class Solution(object):
             tmp_res = 0
             for i in xrange(1, length):
                 if nums[i] == nums[i - 1]:
-                    continue
+                  ;q  continue
                 tmp = nums[i] > nums[i - 1]
                 if top ^ tmp:
                     tmp_res += 1
