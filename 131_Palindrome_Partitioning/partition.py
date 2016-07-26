@@ -20,15 +20,17 @@ class Solution(object):
         """
         result = []
         def dfs(stack, s):
+            # s is None: return 
             if not s:
                 result.append(stack)
-
+            # len(s) == 1, s must be palindrome
             if len(s) == 1:
                 result.append(stack + [s])
                 return
 
             i = 1
             while i <= len(s):
+                # Every time, we divide s at i into two part
                 if self.isPalindrome(s[:i]):
                     dfs(stack + [s[:i]], s[i:])
                 i += 1
