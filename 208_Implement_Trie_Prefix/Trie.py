@@ -26,13 +26,13 @@ class Trie(object):
             prev_node = node
             node = node.children[word[i]]
             i += 1
-        
+
         while i < len(word):
             node.children[word[i]] = TrieNode()
             prev_node = node
             node = node.children[word[i]]
             i += 1
-        # True if this Node is the end of somestring       
+        # True if this Node is the end of somestring
         prev_node.children[word[-1]].isKey = True
 
 
