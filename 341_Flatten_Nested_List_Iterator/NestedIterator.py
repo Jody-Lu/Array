@@ -41,6 +41,9 @@ class NestedIterator(object):
         print nestedList[0].getList()[0].getInteger()
         >> 1
         """
+        """
+        flatten all elements when we initialize the object
+        """
         self.items = []
         if not nestedList: return 
         curr = [nestedList[0]]
@@ -48,17 +51,15 @@ class NestedIterator(object):
         i = 1
         while curr:
             while curr:
-                #print curr
                 top = curr.pop()
                 if top.isInteger():
-                    #print top.getInteger()
+                    # If next is empty, put all elements into items
                     if not next:
                         self.items.insert(0, top.getInteger())
                     else:
                         next.insert(0, top)
                 else:
-                    for ni in top.getList():
-                        next.insert(0, ni)
+                    next = top.getList()[::-1] + next
 
             if i < len(nestedList) and not next:
                 next.insert(0, nestedList[i])
@@ -66,7 +67,6 @@ class NestedIterator(object):
 
             curr, next = next, curr
 
-        print self.items
 
     def next(self):
         """
