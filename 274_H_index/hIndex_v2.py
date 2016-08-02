@@ -5,10 +5,11 @@ class Solution(object):
         :rtype: int
         """
         citations.sort()
-        for idx in xrange(len(citations)):
-            for j in xrange(citations[idx] + 1):
-                if j == len(citations) - idx:
-                    return j
+        length = len(citations)
+        for idx in xrange(length):
+            # We only have to check wheather citations[idx] >= (length - idx) 
+            if citations[idx] >= (length - idx):
+                return length - idx
         return 0
 
 
