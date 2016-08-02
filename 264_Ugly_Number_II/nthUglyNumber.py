@@ -8,6 +8,7 @@ class Solution(object):
         p1 = p2 = p3 = 0
         while len(q) < n:
             m1, m2, m3 = q[p1] * 2, q[p2] * 3, q[p3] * 5
+            print m1, m2, m3
             mini = min(m1, m2, m3)
 
             if mini == m1:
@@ -23,6 +24,6 @@ class Solution(object):
 
 
 sol = Solution()
-n = 1500
+n = 5
 print sol.nthUglyNumber(n)
 
