@@ -3,8 +3,8 @@ class Solution(object):
         # go right, left, up, down
         self.dx = [1, -1, 0, 0]
         self.dy = [0, 0, 1, -1]
-        self.row_lenght = 0
-        self.col_length = 0
+        self.y_lenght = 0
+        self.x_length = 0
     def numIslands(self, grid):
         """
         :type grid: List[List[str]]
@@ -12,26 +12,25 @@ class Solution(object):
         """
         if not grid:
             return 0
-        self.row_length = len(grid[0])
-        self.col_length = len(grid)
+        self.x_length = len(grid[0])
+        self.y_length = len(grid)
 
-        def removeIsland(x, y):
-            grid[x][y] = '0'
+        def removeIsland(y, x):
+            grid[y][x] = '0'
             for i in xrange(4):
                 nextX = x + self.dx[i]
                 nextY = y + self.dy[i]
-                if nextX >=0 and \
-                   nextX < self.row_length and \
-                   nextY >= 0 and \
-                   nextY < self.col_length:
-                       if grid[nextX][nextY] == '1':
-                           removeIsland(nextX, nextY)
+
+                if 0 <= nextX < self.x_length and \
+                   0 <= nextY < self.y_length and \
+                   grid[nextY][nextX] == '1':
+                       removeIsland(nextY, nextX)
         res = 0
-        for x in xrange(self.col_length):
-            for y in xrange(self.row_length):
-                if grid[x][y] == '1':
+        for y in xrange(self.y_length):
+            for x in xrange(self.x_length):
+                if grid[y][x] == '1':
                     res += 1
-                    removeIsland(x, y)
+                    removeIsland(y, x)
                 else:
                     continue
         return res
