@@ -11,15 +11,20 @@ class Codec:
         :type root: TreeNode
         :rtype str
         """
+        # If root is None, return empty tree.
         if not root: return "[]"
         curr = [root]
         res = []
+
         while curr:
             node = curr.pop()
+            # If node is not None, put its children into curr
+            # either None or something
             if node:
                 res.append(str(node.val))
                 curr.insert(0, node.left)
                 curr.insert(0, node.right)
+            # If node is None, put "null" into res
             else:
                 res.append("null")
 
@@ -28,6 +33,7 @@ class Codec:
         while res[i] == "null":
             i -= 1
         """
+        # Since we put all the "null" of deepest node, we have to remove them
         while res[-1] == "null":
             res.pop()
         return  '[' + ','.join(res) + ']'
@@ -39,15 +45,18 @@ class Codec:
         :type data: str
         :rtype: TreeNode
         """
+        # Empty tree
         if data == "[]":
             return None
-
+        # Parsing the data into nodes
         nodes = [None if val == "null" else TreeNode(int(val))
                  for val in data.strip("[]").split(',')]
+
+        # kids: used to be popped out
+        # nodes: used to construct the tree
         kids = nodes[::-1]
         root = kids.pop()
-        #print nodes
-        #print kids
+
         for node in nodes:
             if node:
                 if kids: node.left = kids.pop()
