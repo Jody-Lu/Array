@@ -1,10 +1,16 @@
-class TreeNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+#Serailize and Deserialize Binary Tree
+
+##Serialize
+
+**Algorithm**
+
+1. This algorithm comes from ``Tree level order traversal`` (BFS).
+2. Use ``curr`` to store the node to be handled. 
 
 
+**Code**
+
+```python
 class Codec:
     def serialize(self, root):
         """Encodes a tree to a single string.
@@ -37,9 +43,19 @@ class Codec:
         while res[-1] == "null":
             res.pop()
         return  '[' + ','.join(res) + ']'
+```
 
+##Deserialize
 
+**Algorithm**
 
+1. Parsing the ``data``.
+2. 
+
+**Code**
+
+```python
+class Codec:
     def deserialize(self, data):
         """Decodes your encoded data to tree.
         :type data: str
@@ -62,46 +78,4 @@ class Codec:
                 if kids: node.left = kids.pop()
                 if kids: node.right = kids.pop()
         return root
-
-    def drawtree(self, root):
-        def height(root):
-            return 1 + max(height(root.left), height(root.right)) if root else -1
-        def jumpto(x, y):
-            t.penup()
-            t.goto(x, y)
-            t.pendown()
-        def draw(node, x, y, dx):
-            if node:
-                t.goto(x, y)
-                jumpto(x, y-20)
-                t.write(node.val, align='center', font=('Arial', 12, 'normal'))
-                draw(node.left, x-dx, y-60, dx/2)
-                jumpto(x, y-20)
-                draw(node.right, x+dx, y-60, dx/2)
-        import turtle
-        t = turtle.Turtle()
-        t.speed(0); turtle.delay(0)
-        h = height(root)
-        jumpto(0, 30*h)
-        draw(root, 0, 30*h, 40*h)
-        t.hideturtle()
-        turtle.mainloop()
-
-
-
-
-
-codec = Codec()
-data = "[2,1,3,0,7,9,1,2,null,1,0,null,null,8,8,null,null,null,null,7]"
-root = codec.deserialize(data)
-print data
-print codec.serialize(root)
-codec.drawtree(root)
-
-
-
-
-
-
-
-
+```
