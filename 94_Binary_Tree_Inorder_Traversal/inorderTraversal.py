@@ -7,10 +7,8 @@ class Solution(object):
         stack = []
         def dfs(root):
             if not root: return
-            if root.left:
-                dfs(root.left)
+            if root.left: dfs(root.left)
             stack.append(root.val)
-            if root.right:
-                dfs(root.right)
+            if root.right: dfs(root.right)
         dfs(root)
         return stack
