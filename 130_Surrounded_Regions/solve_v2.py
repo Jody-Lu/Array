@@ -86,7 +86,7 @@ class Solution(object):
             for j in xrange(m):
                 if not uf.connected(i * m + j, n * m):
                     board[i][j] = 'X'
-
+        print uf.id
 
 sol = Solution()
 board = [list("XXXX"), list("XOOX"), list("XOOX"), list("XXXX")]
