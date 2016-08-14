@@ -1,3 +1,13 @@
+#Count of Smaller After Self
+
+##Fenwick Tree
+
+1. Also known as **Binary Indexed Tree**。
+2. 先找出 ``nums`` 中每個元素的相對大小關係。
+3. 再從最後面開始推入 ``Binary Indexed Tree``。
+4. 可以這樣想，假設 ``iNums = [4, 2, 3, 1]``，先取 index 1 的 sum，再從 1 開始更新 BIT，這樣可以保證 iterate 到 index ``i`` 時，如果 ``i > 1``，則可以數到 1; 如果小於，則數不到。
+
+```python
 class FenwickTree(object):
     def __init__(self, n):
         self.n = n
@@ -32,7 +42,7 @@ class Solution(object):
             #print "ft", ft.sums
         #print "test", ft.getSum(iNums[0])
         return ans
+```
 
-sol = Solution()
-nums = [1, 2, 3, 4]
-print sol.countSmaller(nums)
+##Merge Sort
+
