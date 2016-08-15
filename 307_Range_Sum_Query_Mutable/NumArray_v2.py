@@ -11,7 +11,7 @@ class NumArray(object):
         def construct(arr, n):
             for i in xrange(n):
                 self.updatebit(i, nums[i])
-                print self.BITTree
+                print self.BITTreesw
         construct(nums, self.size)
 
 
