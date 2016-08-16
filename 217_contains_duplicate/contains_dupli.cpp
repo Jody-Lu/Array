@@ -15,8 +15,7 @@ public:
 			it != nums.end();
 			++it)
 		{
-			++counts[*it];
-			if(counts[*it] > 1) return true;
+		    if(++counts[*it] > 1) return true;
 		}
 
 		return false;

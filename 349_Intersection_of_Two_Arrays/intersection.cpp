@@ -29,7 +29,6 @@ class Solution {
         }
 };
 
-
 int main()
 {
     Solution sol;
@@ -46,5 +45,4 @@ int main()
         cout << *it <<" ";
     }
     cout << endl;
-    return 0;
 }
