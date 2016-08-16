@@ -11,24 +11,19 @@ class Solution {
             map<string, int> dict;
             vector<string> result;
             int i = 0;
-            while(i + 10 < s.size())
+            while(i + 10 <= s.size())
             {
-                dict[s.substr(i, 10)]++;
+                string sub = s.substr(i, 10);
+                if(++dict[sub] > 1)
+                {
+                    result.push_back(sub);
+                    dict[sub] = INT_MIN;
+                }
                 i++;
             }
-
-            for(map<string, int>::iterator it = dict.begin();
-                it != dict.end();
-                it++)
-            {
-                if(it -> second > 1)
-                    result.push_back(it -> first);
-            }
-
             return result;
     	}
 };
-
 int main()
 {
     string s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT";
