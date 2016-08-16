@@ -9,11 +9,14 @@ class Solution
 public:
 	int countPrimes(int n)
 	{
-		if(n == 0) return 0;
+	    if(n == 0) return 0;
 		int result = 0;
 		vector<int> prime_table(n, -1); // -1:unmarked +1:marked
-		prime_table[0] = 1; prime_table[1] = 1;
-		for(int p = 2; p < sqrt(n); ++p)
+        // 0 and 1 are not prime number
+        prime_table[0] = 1; prime_table[1] = 1;
+
+        // mark all non-prime number
+        for(int p = 2; p < sqrt(n); ++p)
 		{
 			if(prime_table[p] == 1) // marked
 				continue;
@@ -26,6 +29,7 @@ public:
 			}
 		}
 
+        // all unmarked numbers are prime numbers.
 		for(int i = 0; i < prime_table.size(); ++i)
 		{
 			//cout << prime_table[i] << " ";
