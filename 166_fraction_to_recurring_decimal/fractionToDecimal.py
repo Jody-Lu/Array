@@ -32,7 +32,7 @@ class Solution(object):
 
         else:
             ans += "".join(numList[1:])
-        
+
         if negativeFlag:
             ans = '-' + ans
         return ans
