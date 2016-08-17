@@ -22,16 +22,7 @@ class Solution(object):
             else:
                 res.next = l2
                 l2 = l2.next
-        
-        while l1:
-            res.next = l1
-            l1 = l1.next
-            res = res.next
+        if(l1): res.next = l1
+        if(l2): res.next = l2
 
-        while l2:
-            res.next = l2
-            l2 = l2.next
-            res = res.next
-
-        result = result.next
-        return result
+        return result.next
