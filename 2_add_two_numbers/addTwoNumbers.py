@@ -35,6 +35,7 @@ class Solution(object):
         diff = self.getListLength(l1) - self.getListLength(l2)
         carrier = 0
         
+        # add zeroes to the one which is shorter.
         if diff > 0:
             l2 = self.add_zero(l2, diff)
         elif diff < 0:
@@ -58,6 +59,7 @@ class Solution(object):
             l1 = l1.next
             l2 = l2.next
 
+        # for the case: both l1 + l2's length is exceeded.
         if carrier >= 1:
             if not prev.next:
                 prev.next = ListNode(carrier)
