@@ -7,7 +7,7 @@ class Solution(object):
             res = res * 10 + x % 10
             x /= 10
 
-        return res * sign if res <= 2147483647 and res >= -2147483648 else 0
+        return res * sign if -2147483648 <=  res <= 2147483647 else 0
 
 sol = Solution()
 x = -1234
