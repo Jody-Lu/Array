@@ -19,37 +19,10 @@ public:
 		{
 			int area = (right - left) * min(height[right], height[left]);
 			result = max(result, area); //比較 “縮小底邊” 或是 “增加高” 對面積的影響哪個大
-			if(height[left] <= height[right])
-			{
-				++left;
-			}
-			else
-			{
-				--right;
-			}
+			if(height[left] <= height[right]) ++left;
+			else --right;
 		}
-
 		return result;
-
-		//cout << it -> first << " " << it -> second << endl;
-
-		// O(n^2)
-		/*
-		int cur_max = 0;
-		int current;
-
-		for(int i = 0; i < height.size(); ++i)
-		{
-			for(int j = i + 1; j < height.size(); ++j)
-			{
-				current = (j - i) * min(height[i], height[j]);
-				cur_max = max(cur_max, current);
-			}
-		}
-
-		return cur_max;
-		*/
-
 	}
 };
 
