@@ -38,9 +38,9 @@ class Solution(object):
 
 sol = Solution()
 #coins = [84,457,478,309,350,349,422,469,100,432,188]
-coins = [1, 2, 5]
+coins = [370,417,408,156,143,434,168,83,177,280,117]
 print coins
 #amount = 6249
-amount = 11
-print sol.coinChange_v2(coins, amount)
+amount = 9953
+print sol.coinChange(coins, amount)
 

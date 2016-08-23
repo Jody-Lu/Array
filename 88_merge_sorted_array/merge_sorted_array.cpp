@@ -11,7 +11,8 @@ public:
 		int i_1 = m - 1, i_2 = n - 1, icur = m + n - 1;
 		while(i_1 >= 0 && i_2 >= 0)
 		{
-			nums1[icur--] = nums1[i_1] >= nums2[i_2]? nums1[i_1--] : nums2[i_2--];
+			// count from back
+            nums1[icur--] = nums1[i_1] >= nums2[i_2]? nums1[i_1--] : nums2[i_2--];
 		}
 		while(i_2 >= 0)
 		{
