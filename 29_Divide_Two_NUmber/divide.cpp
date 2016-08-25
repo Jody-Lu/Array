@@ -13,8 +13,10 @@ class Solution {
             ll dvd = labs(dividend);
             ll dvs = labs(divisor);
             int res = 0;
+            /* O(log(N)) */
             while(dvd >= dvs) {
                 ll tmp = dvs, multiple = 1;
+                /* O(log(N)) */
                 while((tmp << multiple) <= dvd)
                     multiple++;
                 dvd -= (dvs << (multiple - 1));
