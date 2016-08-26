@@ -13,7 +13,11 @@ public:
 		int res = nums.size();
 		for(int i = 0; i < nums.size(); ++i)
 		{
-			res = res ^ i ^ nums[i];
+			/*nums must include 0 ~ n and i must be counted from 0 ~ n (0 ~ n happen two times except the missing one).
+             So, if we XOR them together, the result of the same number must be 0, the result is the missing one.
+             */
+
+            res = res ^ i ^ nums[i];
 			cout << res << " ";
 		}
 		cout << endl;

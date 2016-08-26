@@ -1,4 +1,5 @@
 class Solution(object):
+    # O(x): too slow
     def mySqrt(self, x):
         """
         :type x: int

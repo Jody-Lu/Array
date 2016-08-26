@@ -13,6 +13,7 @@ class Solution {
 
             int n = s.size(), num = words.size(), len = words[0].size();
             vector<int> indexes;
+            /**/
             for(int i = 0; i < n - num * len + 1; i++) {
                 unordered_map<string, int> seen;
                 int j = 0;
