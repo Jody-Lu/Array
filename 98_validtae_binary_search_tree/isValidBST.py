@@ -4,10 +4,10 @@ class Solution(object):
         def traverse(root):
             if not root: return 
             traverse(root.left)
-            nodes.push_back(root.val)
+            nodes.append(root.val)
             traverse(root.right)
         traverse(root)
-        for idx in range(len(nodes)):
+        for idx in xrange(1, len(nodes)):
             if nodes[idx-1] >= nodes[i]: 
                 return False
         else:
