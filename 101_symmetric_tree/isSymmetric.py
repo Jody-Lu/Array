@@ -8,10 +8,8 @@ class Solution(object):
         """
         if not root: return True
         def ifsymmetric(root1, root2):
-            if not root1 and not root2:
-                return True
-            elif not root1 or not root2:
-                return False
+            if not root1 or not root2:
+                return root1 == root2
 
             if root1.val != root2.val:
                 return False
