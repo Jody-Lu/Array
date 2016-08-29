@@ -1,4 +1,39 @@
 class Solution(object):
+    # Bottom-Up
+    aux = []
+    def mergeSortBU(self, nums):
+        sz = 1
+        N = len(nums)
+        self.aux = [None] * N
+        while sz < N:
+            lo = 0
+            while lo < N - sz:
+                self.merge(nums, lo, lo + sz - 1, min(lo+sz+sz-1, N-1))
+                lo += (sz + sz)
+            sz = sz + sz
+    
+    def merge(self, nums, lo, mid, hi):
+        for i in xrange(lo, hi + 1):
+            self.aux[i] = nums[i]
+        
+        i = lo
+        j = mid + 1
+        for k in xrange(lo, hi + 1):
+            if i > mid: 
+                nums[k] = self.aux[j]
+                j += 1
+            elif j > hi:
+                nums[k] = self.aux[i]
+                i += 1
+            elif self.aux[j] < self.aux[i]:
+                nums[k] = self.aux[j]
+                j += 1
+            else:
+                nums[k] = self.aux[i]
+                i += 1
+        
+    
+    # Top-Down
     def mergeSort(self, nums):
         self._mergeSort(nums, 0, len(nums) - 1)
 
@@ -30,7 +65,13 @@ class Solution(object):
             aList[first:last+1] = tmp[:]
 
 if __name__ == '__main__':
-    nums = [8, 5, 3, 1, 9, 6, 0, 7, 100, 4, 2, 5]
+    import time
+    nums = [i for i in reversed(xrange(1000000))]
     sol = Solution()
+    start = time.time()
+    sol.mergeSortBU(nums)
+    print time.time() - start
+    nums = [i for i in reversed(xrange(1000000))]
+    start = time.time()
     sol.mergeSort(nums)
-    print nums
+    print time.time() - start
