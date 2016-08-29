@@ -1,4 +1,6 @@
+#include <iostream>
 
+using namespace std;
 //Definition for singly-linked list.
 struct ListNode {
     int val;
@@ -9,7 +11,7 @@ struct ListNode {
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
-        ListNode *dummy = new ListNode(0);
+        dummy = new ListNode(0);
         ListNode *tmp = dummy;
 
         while(l1 && l2) {
@@ -27,4 +29,12 @@ public:
         if(l2) tmp -> next = l2;
         return dummy -> next;
     }
+private:
+    ListNode *dummy;
 };
+
+int main() {
+    Solution sol;
+    sol.mergeTwoLists(NULL, NULL);
+    return 0;
+}

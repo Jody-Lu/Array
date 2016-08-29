@@ -26,7 +26,7 @@ class Solution(object):
 
 
 candidates = [2, 3, 6, 7]
-target = 1000
+target = 100
 sol = Solution()
 res = sol.combinationSum(candidates, target)
 print res

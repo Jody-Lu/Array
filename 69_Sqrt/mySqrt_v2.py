@@ -8,10 +8,18 @@ class Solution(object):
             if sq == x: return mid
             if sq < x: begin = mid + 1
             else: end = mid - 1
-        return end
+        first, last = 0.01, 0.99
+
+        while first <= last:
+            mid = (first + last) / 2
+            sq = (end + mid) * (end + mid)
+            if sq == x: return mid
+            if sq < x: first = mid + 0.01
+            else: last = mid - 0.01
+        return end + last
 
 sol = Solution()
-x = 8
+x = 1993
 print sol.mySqrt(x)
 
 
