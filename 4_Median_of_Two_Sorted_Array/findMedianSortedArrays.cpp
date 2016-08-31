@@ -20,15 +20,24 @@ class Solution {
             int aMid = (aL + aR) / 2;
             int bMid = (bL + bR) / 2;
 
+
             if(A[aMid] <= B[bMid]) {
+                /* k is smaller than the (m + n) / 2, where m = A.size, n = B.size() */
+                /* Since A[aMid] <= B[bMid], just drop the right half of B. */
                 if(k <= (aMid - aL) + (bMid - bL) + 1)
                     return findKth(A, aL, aR, B, bL, bMid - 1, k);
+                /* k is larger than the (m + n) / 2, drop the left half of A. */
+                /* Since drop the smaller part, we became finding k - (aMid - aL) -1. */
                 else
                     return findKth(A, aMid + 1, aR, B, bL, bR, k - (aMid - aL) -1);
             }
             else {
+                /* k is smaller than the (m + n) / 2, where m = A.size, n = B.size() */
+                /* Since A[aMid] > B[bMid], just drop the right half of A. */
                 if (k <= (aMid - aL) + (bMid - bL) + 1)
                     return findKth(A, aL, aMid - 1, B, bL, bR, k);
+                /* k is larger than the (m + n) / 2, drop the left half of A. */
+                /* Since drop the smaller part, we became finding k - (bMid - aL) -1. */
                 else
                     return findKth(A, aL, aR, B, bMid + 1, bR, k - (bMid - bL) - 1);
             }
