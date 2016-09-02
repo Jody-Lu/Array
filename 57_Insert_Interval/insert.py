@@ -26,12 +26,22 @@ class Solution(object):
             else:
                 idx += 1
         return intervals
+    def insert(self, intervals, newInterval):
+        """
+        :type intervals: List[Interval]
+        :type newInterval: Interval
+        :rtype: List[Interval]
+        """
+        res = []
+        begin = 0
+        end = 0
+        while begin < len(intervals) and newInterval.start > intervals[begin].end:
+            begin += 1
+        while end < len(intervals) newInterval.end > intervals[end].end:
+            end += 1
 
-
-
-
-
-
-intervals = [Interval(4, 3), Interval(1, 2)]
-sol = Solution()
-sol.merge(intervals)
+        res += intervals[:begin]
+        right = newInterval.end if newInterval.end < intervals[end].start else intervals[end].end
+        res.append(Interval(min(newInterval.start, intervals[begin].start), right))
+        res += intervals[end+ 1:]
+        return res
