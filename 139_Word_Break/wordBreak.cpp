@@ -23,6 +23,12 @@ class Solution {
                         dp[i + sub_len] = true & dp[i];
                 }
             }
+
+
+            for(auto it = dp.begin(); it != dp.end(); it++)
+                cout << *it << " ";
+            cout << endl;
+            
             return dp[len];
     	}
 };
