@@ -17,6 +17,7 @@ class Solution(object):
                     if nums[i] > f[mid]:
                         begin = mid + 1
                     else: end = mid
+                # replace f[begin] with nums[i] 
                 f[begin] = nums[i]
         return len(f)
 
