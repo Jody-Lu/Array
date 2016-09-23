@@ -47,4 +47,14 @@ class Solution(object):
         :type s: str
         :rtype: NestedInteger
         """
+        n = len(s)
+        i = 0
+        res = []
+        while i < n:
+            if s[i].isdigit():
+                begin = i
+                while(s[i].isdigit()) i += 1
+                res.append(NestedInteger(int(s[begin:i])))
+        print res
+
        

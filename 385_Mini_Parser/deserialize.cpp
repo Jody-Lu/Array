@@ -27,9 +27,14 @@
  *     const vector<NestedInteger> &getList() const;
  * };
  */
+#include <iostream>
+#include <string>
+
+using namespace std;
+
 class Solution {
 	public:
     	NestedInteger deserialize(string s) {
-        
+            
     	}
 };
