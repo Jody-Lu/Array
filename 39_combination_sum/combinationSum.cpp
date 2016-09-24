@@ -3,48 +3,31 @@
 
 using namespace std;
 
-class Solution
-{
+class Solution {
 public:
-	vector<vector<int> > combinationSum(vector<int>& candidates, int target)
-	{
-		vector<vector<int> > result;
-		//if(candidates.size() == 1 && candidates[0] > target) return result;
-		sort(candidates.begin(), candidates.end());
-		vector<int> stack;
-		dfs(stack, result, candidates, target);
-
-		for(int i = 0; i < result.size(); i++)
-		{
-			sort(result[i].begin(), result[i].end());
-		}
-
-		sort(result.begin(), result.end());
-		result.erase(unique(result.begin(), result.end()), result.end());
-		return result;
-	}
+    vector<vector<int>> combinationSum(vector<int>& candi, int target) {
+        sort(candi.begin(), candi.end());
+        vector<vector<int> > res;
+        dfs(res, target, candi, vector<int>());
+        return res;
+    }
 private:
-	// put each element into recurse and into the next recurse
-	void dfs(vector<int>& stack, vector<vector<int> >& result, vector<int>& candidates, int target)
-	{
-		//if(target < 0) return;
+    void dfs(vector<vector<int> >&  res, int remain, vector<int>& candi, vector<int> v) {
+        if(remain == 0) {
+            res.push_back(v);
+            return;
+        }
 
-		if(target == 0)
-		{
-			result.push_back(stack);
-			return;
-		}
-
-		for(int i = 0; i < candidates.size(); ++i)
-		{
-			if(target < candidates[i]) return;
-
-			stack.push_back(candidates[i]);
-			dfs(stack, result, candidates, target - candidates[i]);
-			stack.pop_back();
-		}
-
-	}
+        for(int i = 0; i < candi.size() && candi[i] <= remain; i++) {
+            if(!v.empty() && candi[i] < v.back())
+                continue;
+            else {
+                v.push_back(candi[i]);
+                dfs(res, remain - candi[i], candi, v);
+                v.pop_back();
+            }
+        }
+    }
 };
 
 int main(int argc, char const *argv[])
