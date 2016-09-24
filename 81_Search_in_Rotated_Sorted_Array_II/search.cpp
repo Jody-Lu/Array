@@ -23,7 +23,7 @@ class Solution {
 }; 
 
 int main() {
-    int arr[] = {0, 2, 2};
+    int arr[] = {2, 2, 2};
     vector<int> nums(arr, arr + 3);
     int target = 0;
     Solution sol;

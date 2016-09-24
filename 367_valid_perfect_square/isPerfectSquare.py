@@ -17,7 +17,7 @@ class Solution(object):
         return begin * begin == num
 
 sol = Solution()
-num = 0
+num = 808201
 print sol.isPerfectSquare(num)
 
 

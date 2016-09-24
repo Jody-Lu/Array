@@ -1,15 +1,17 @@
 class Solution(object):
     def isValid(self, s):
+        if len(s) % 2 == 1: return False
         stack = []
         para_dic = {')':'(', ']':'[', '}':'{'}
         for idx in xrange(len(s)):
-            if s[idx] == '(' or s[idx] == '{' or s[idx] == '[':
+            if s[idx] in {'(', '[', '{'}:
                 stack.append(s[idx])
             else:
-                if para_dic[s[idx]] != stack[-1]: return False
+                if not len(stack) or para_dic[s[idx]] != stack[-1]: return False
                 else: stack.pop()
 
-        return True
+
+        return len(stack) == 0
 
 sol = Solution()
 s = "{(})[]"
