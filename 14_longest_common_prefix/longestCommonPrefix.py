@@ -16,7 +16,7 @@ class Solution(object):
                 else:
                     j += 1
 
-            if j < len(strs):
+            if j < len(strs): # no common char at this index
                 break
             else:
                 index += 1
