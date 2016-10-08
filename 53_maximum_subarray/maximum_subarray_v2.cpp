@@ -20,6 +20,7 @@ class Solution {
             }
             else return nums[begin];
             
+            // Merge the result: compare left, right, and middle. 
             int tmp = 0;
             for(int i = mid; i >= begin; i--) {
                 tmp += nums[i];
