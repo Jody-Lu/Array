@@ -8,18 +8,17 @@ class Solution(object):
         com_len = len(digits)
         result = []
 
-        def dfs(s, level):
-            print s
+        def dfs(s, start):
             if len(s) == com_len: 
                 result.append(s)
                 return 
 
-            for word in num_dic[digits[level]]:
-                dfs(s + word, level + 1)
+            for word in num_dic[digits[start]]:
+                dfs(s + word, start + 1)
 
 
         dfs('', 0)
         return result
 
 sol = Solution()
-sol.letterCombinations('234')
+print sol.letterCombinations('23')
