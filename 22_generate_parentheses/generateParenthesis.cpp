@@ -14,7 +14,7 @@ private:
 
         if(nleft < n)
             dfs(n, s + '(', nleft + 1, nright, res);
-        if(nright < nleft)
+        if(nright < nleft) // If nright > nleft, then it must be invalid
             dfs(n, s + ')', nleft, nright + 1, res);
     }
 };
