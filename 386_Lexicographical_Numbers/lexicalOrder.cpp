@@ -7,22 +7,22 @@ using namespace std;
 class Solution {
     public:
         vector<int> lexicalOrder(int n) {
-            myn = n;
+            vector<int> res;
             for(int i = 1; i < 10; i++)
-                dfs(i);
+                dfs(res, i, n);
             return res;
         }
     private:
-        void dfs(int i) {
-            if(i <= myn) { 
+        void dfs(vector<int> &res, int i, int &n) {
+            if(i <= n)
+            { 
                 res.push_back(i);
-                for(int d = 0; d < 10; d++) {
-                    dfs(i*10 + d);
+                for(int d = 0; d < 10; d++)
+                {
+                    dfs(res, i*10 + d, n);
                 }
             }
         }
-        vector<int> res;
-        int myn;
 };
 
 int main() {
