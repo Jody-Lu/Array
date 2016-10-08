@@ -3,22 +3,17 @@
 
 using namespace std;
 
-class Solution
-{
+class Solution {
 public:
-	void merge(vector<int>& nums1, int m, vector<int>& nums2, int n)
-	{
-		int i_1 = m - 1, i_2 = n - 1, icur = m + n - 1;
-		while(i_1 >= 0 && i_2 >= 0)
-		{
-			// count from back
-            nums1[icur--] = nums1[i_1] >= nums2[i_2]? nums1[i_1--] : nums2[i_2--];
-		}
-		while(i_2 >= 0)
-		{
-			nums1[icur--] = nums2[i_2--];
-		}
-	}
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int idx1 = m - 1, idx2 = n - 1, idx = m + n - 1;
+        while(idx1 >= 0 && idx2 >= 0)
+            nums1[idx--] = (nums1[idx1] > nums2[idx2])? nums1[idx1--] : nums2[idx2--];
+        // idx1 < 0 --> the remaining elements are nums2's.
+        // idx2 < 0 --> the remaining elements are nums1's (they are already in there position). 
+        while(idx2 >= 0) 
+            nums1[idx--]= nums2[idx2--];
+    }
 };
 
 int main()
