@@ -13,11 +13,11 @@ struct TreeNode {
 class Solution {
     public:
         TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-            return dfs(inorder, preorder, 0, inorder.size() - 1);
+            int preIndex = 0;
+            return dfs(inorder, preorder, 0, inorder.size() - 1, preIndex);
         }
     private:
-        TreeNode* dfs(vector<int>& in, vector<int>& pre, int inStrt, int inEnd) {
-            static int preIndex = 0;
+        TreeNode* dfs(vector<int>& in, vector<int>& pre, int inStrt, int inEnd, int& preIndex) {
 
             if(inStrt > inEnd)
                 return NULL;
@@ -33,8 +33,8 @@ class Solution {
             // We define a search function here to help us find the root in inOrder
             int inIndex = search(in, inStrt, inEnd, tNode->val);
 
-            tNode -> left = dfs(in, pre, inStrt, inIndex - 1);
-            tNode -> right = dfs(in, pre, inIndex + 1, inEnd);
+            tNode -> left = dfs(in, pre, inStrt, inIndex - 1, preIndex);
+            tNode -> right = dfs(in, pre, inIndex + 1, inEnd, preIndex);
             return tNode;
         }
         int search(vector<int>& v, int strt, int end, int target) {
