@@ -7,17 +7,23 @@ public:
         return res;
     }
 private:
-    void dfs(vector<vector<int> >& res, int remain, vector<int>& candi, vector<int> v, int begin) {
+    void dfs(vector<vector<int> >& res,
+             vector<int>& candi,
+             vector<int> v,
+             int begin,
+             int remain) {
+
         if(remain == 0) {
             res.push_back(v);
             return;
         }
         for(int i = begin; i < candi.size(); i++) {
             if(candi[i] > remain) break;
-            // do not count the same item more than one times in the same level 
-            if(i && candi[i] == candi[i - 1] && i > begin) continue;
+            // do not count the same item more than one times in the same level
+            if(i != begin && candi[i] == candi[i - 1])
+                continue;
             v.push_back(candi[i]);
-            dfs(res, remain - candi[i], candi, v, i + 1);
+            dfs(res, candi, v, i + 1, remain - candi[i]);
             v.pop_back();
         }
     }
