@@ -6,42 +6,33 @@ using namespace std;
 
 class Solution {
 	public:
-        // O(n^3)
     	int minCut(string s) {
-            vector<int> dp(s.size(), s.size()); // dp[i]: minCut from s[0] to s[i]
-            dp[0] = 0;
-            for(int i = 1; i < s.size(); i++) {
-                for(int j = 0; j <= i; j++) {
-                    if(isPalindrome(s, j, i)) {
-                        if(j == 0) {
-                            dp[i] = 0;
-                            break;
-                        }
-                        else {
-                            dp[i] = min(dp[i], 1 + dp[j - 1]);
-                        }
+            const int n = s.size();
+            if(n <= 1) return 0;
+            int i, j;
+            vector<vector<bool> > isPalin(n, vector<bool>(n, false));
+            vector<int> minCuts(n + 1, 0);
+
+            // length i string need (i - 1) cuts
+            for(i = 0; i <= n; i++)
+                minCuts[i] = i - 1;
+
+            for(j = 0; j < n; j++) {
+                for(i = j; i >= 0; i--) {
+                    if(s[i] == s[j] && ((j-i < 2) || isPalin[i + 1][j - 1])) {
+                        isPalin[i][j] = true;
+                        minCuts[j + 1] = min(minCuts[j + 1], 1 + minCuts[i]);
                     }
                 }
             }
-            return dp[s.size() - 1];
-    	}
-        bool isPalindrome(string &s, int left, int right) {
-            int begin = left, end = right;
-            while(begin < end) {
-                if(s[begin] != s[end])
-                    return false;
-                else {
-                    begin++;
-                    end--;
-                }
-            }
-            return true;
+            return minCuts[n];
         }
 };
+
+
 int main() {
     Solution sol;
     string s = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
     cout << s << endl;
     cout << sol.minCut(s) << endl;
-
 }
