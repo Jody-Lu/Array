@@ -32,11 +32,13 @@ class LRUCache {
 
     private:
         typedef list<int> LI;
+        // pair<value, key iterator>
         typedef pair<int, LI::iterator> PII;
         typedef unordered_map<int, PII> HIPII;
 
         void touch(HIPII::iterator it) {
             int key = it->first;
+            // that's why map'a value is (value, iterator) pair.
             _used.erase(it->second.second);
             _used.push_front(key);
             it->second.second = _used.begin();
