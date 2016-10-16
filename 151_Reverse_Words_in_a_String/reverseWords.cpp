@@ -8,13 +8,14 @@ class Solution {
     public:
         void reverseWords(string& s) {
             reverse(s.begin(), s.end());
-            int index = 0;
+            int index = 0; // index to indeicate the process
             for(int i = 0; i < s.size(); i++) {
                 if(s[i] != ' ') {
                     int j = i;
                     if(index != 0) s[index++] = ' ';
                     while(j < s.size() && s[j] != ' ')
                         s[index++] = s[j++];
+                    // (j - i) is the lenght of the word
                     reverse(s.begin() + index - (j - i), s.begin() + index);
                     i = j;
                 }
