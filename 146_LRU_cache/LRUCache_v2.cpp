@@ -27,6 +27,7 @@ class LRUCache {
                 }
                 _used.push_front(key);
             }
+            // same key may map to different value.
             _cache[key] = make_pair(value, _used.begin());
         }
 

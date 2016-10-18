@@ -19,8 +19,9 @@ class Solution {
         bool validate(TreeNode* root, TreeNode* prev) {
                 if(!root) return true;
                 if(!validate(root->left, prev)) return false;
-                if(prev != NULL && prev -> val >= root -> val) return false;
-                prev = root;
+                // prev: before setting to current is previous
+                if(prev != NULL && prev -> val >= root -> val) return false; //prev
+                prev = root; // current
                 return validate(root->right, prev);
         }
 };

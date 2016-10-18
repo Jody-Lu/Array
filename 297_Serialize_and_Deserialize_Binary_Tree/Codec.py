@@ -16,6 +16,7 @@ class Codec:
         curr = [root]
         res = []
 
+        # level order traversal 
         while curr:
             node = curr.pop()
             # If node is not None, put its children into curr

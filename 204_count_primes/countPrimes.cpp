@@ -22,7 +22,7 @@ public:
 				continue;
 
 			int num = p * p;
-			while(num <= n)
+			while(num < n)
 			{
 				prime_table[num] = 1;
 				num += p;

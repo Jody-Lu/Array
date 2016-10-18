@@ -19,6 +19,7 @@ class Solution {
 
             newHead = head->next;
             for(l1 = head; l1 != NULL; l1 = l1->next->next) {
+                // l1->random->next is the node of l2
                 if(l1->random != NULL) l1->next->random = l1->random->next;
             }
 
