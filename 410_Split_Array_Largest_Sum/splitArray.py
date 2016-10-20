@@ -11,7 +11,7 @@ class Solution(object):
                 end = mid - 1
         return begin
 
-    
+
     def isValid(self, nums, m, target):
         num = 0
         count = 0

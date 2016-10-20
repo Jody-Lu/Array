@@ -16,7 +16,7 @@ class Solution {
             return validate(root, prev);
         }
     private:
-        bool validate(TreeNode* root, TreeNode* prev) {
+        bool validate(TreeNode* root, TreeNode*& prev) {
                 if(!root) return true;
                 if(!validate(root->left, prev)) return false;
                 // prev: before setting to current is previous

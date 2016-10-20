@@ -73,12 +73,15 @@ public:
 		if(root == NULL || root -> left == NULL)
 			return;
 
-		if(root -> left != NULL)
+		// left side
+        if(root -> left != NULL)
 			root -> left -> next = root -> right;
 
-		if(root -> right != NULL && root -> next != NULL)
+		// middle
+        if(root -> right != NULL && root -> next != NULL)
 			root -> right -> next = root -> next -> left;
-		else if(root -> right != NULL)
+		// right side
+        else if(root -> right != NULL)
 			root -> right -> next = NULL;
 
 		connect(root -> left);
