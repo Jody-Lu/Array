@@ -14,6 +14,10 @@ Next, we see the normal case.
 a. w1[i - 1] == w2[j - 1] means that we don't need to change any character at this moment, so T[i][j] = T[i - 1][j - 1].
 b. w1[i - 1] != w2[j - 1] means that we need to change 1 character plus the min(T[i][j - 1], T[i - 1][j], T[i - 1][j - 1]).
 
+Replace word1[i - 1] by word2[j - 1] (dp[i][j] = dp[i - 1][j - 1] + 1 (for replacement));
+Delete word1[i - 1] and word1[0..i - 2] = word2[0..j - 1] (dp[i][j] = dp[i - 1][j] + 1 (for deletion));
+Insert word2[j - 1] to word1[0..i - 1] and word1[0..i - 1] + word2[j - 1] = word2[0..j - 1] (dp[i][j] = dp[i][j - 1] + 1 (for insertion))
+
  */
 
 class Solution {
@@ -38,6 +42,7 @@ class Solution {
                     if(w1[i-1] == w2[j-1]) T[i][j] = T[i - 1][j - 1];
                     // w1, w2 have different end at i, j.
                     else
+                        // T[i - 1][j - 1]:
                         T[i][j] = 1 + min(T[i - 1][j - 1], min(T[i - 1][j], T[i][j - 1]));
                 }
             }

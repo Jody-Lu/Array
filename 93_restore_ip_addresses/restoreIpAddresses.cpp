@@ -23,6 +23,7 @@ class Solution {
             // remaining s is too short.
             if(s.size() - begin < (4 - step)) return;
             int num = 0;
+            // the longest is three digits
             for(int i= begin; i < (begin + 3); i++) {
                 num = num * 10 + (s[i] - '0');
                 if(num <= 255) {
