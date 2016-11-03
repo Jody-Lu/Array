@@ -23,7 +23,7 @@ class Solution {
                 fast = nums[nums[fast]];
             }
 
-            fast = nums[0];
+            fast = 0;
             while(slow != fast) {
                 slow = nums[slow];
                 fast = nums[fast];
@@ -34,7 +34,7 @@ class Solution {
 
 int main() {
     Solution sol;
-    int arr[] = {1, 2, 3, 3};
-    vector<int> nums(arr, arr + 4);
+    int arr[] = {1, 3, 4, 2, 2};
+    vector<int> nums(arr, arr + 5);
     cout << sol.findDuplicate(nums) << endl;
 }
