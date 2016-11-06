@@ -9,14 +9,14 @@ class Solution {
             int dy[4] = {0, 0, 1, -1};
             int m = grid.size(), n = grid[0].size();
 
-            grid[x][y] = '0';
+            grid[y][x] = '0';
             for(int i = 0; i < 4; i++) {
                 int nextX = x + dx[i];
                 int nextY = y + dy[i];
                 if(nextX >= 0 && nextX < n &&
                    nextY >= 0 && nextY < m &&
-                   grid[nextX][nextY] == '1') {
-                    removeIsland(grid, nextX, nextY);
+                   grid[nextY][nextX] == '1') {
+                    removeIsland(grid, nextY, nextX);
                 }
             }
         }

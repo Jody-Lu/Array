@@ -22,15 +22,13 @@ class Solution {
         ListNode* mergeKListUtil(int begin, int end) {
             int mid = (begin + end) / 2;
             ListNode* l1, *l2;
-            if(end - begin > 2) {
+            if(end - begin >= 2) {
                 l1 = mergeKListUtil(begin, mid);
                 l2 = mergeKListUtil(mid, end);
             }
-            else if(end - begin == 2) {
-                l1 = mylists[begin];
-                l2 = mylists[begin + 1];
+            else { 
+                return mylists[begin];
             }
-            else return mylists[begin];
 
             return mergeTwoList(l1, l2);
         }

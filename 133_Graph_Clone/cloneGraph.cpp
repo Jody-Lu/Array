@@ -16,14 +16,16 @@ class Solution {
             if(!node) return NULL;
 
             auto it = visited.find(node->label);
-            if(it != visited.end())
+            if(it != visited.end()) {
                 return visited[node->label];
+            }
 
             UndirectedGraphNode* clone = new UndirectedGraphNode(node->label);
             visited[node->label] = clone;
 
-            for(int i = 0; i < node->neighbors.size(); i++)
-                clone->neighbors.push_back(cloneGraph((node->neighbors)[i]));
+            for(auto neighbor : node->neighbors) {
+                (clone->neighbors).push_back(cloneGraph(neighbor));
+            }
 
             return clone;
         }
