@@ -27,7 +27,7 @@ class Solution {
                     else
                         break;
                 }
-                if(j == num) indexes.push_back(j);
+                if(j == num) indexes.push_back(i);
             }
             return indexes;
         }

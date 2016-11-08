@@ -61,6 +61,7 @@ public:
     int longestConsecutive(vector<int>& nums) {
         unordered_set<int> record(nums.begin(), nums.end());
         UF uf(nums.size());
+        int res = 1;
         for(int n : nums) {
             if(record.find(n) == record.end()) continue;
             else {
@@ -68,17 +69,16 @@ public:
                 int next = n + 1;
                 while(record.find(prev) != record.end()) uf.connect(n, prev--);
                 while(record.find(next) != record.end()) uf.connect(n, next++);
+                res = max(res, next - prev - 1);
             }
         }
-        cout << uf.getCount() << endl;
-        uf.printId();
-        return 0;
+        return res;
     }
 };
 
 int main() {
     Solution sol;
-    int arr[6] = {100, 4, 200, 1, 3, 2};
-    vector<int> nums(arr, arr + 6);
-    sol.longestConsecutive(nums);
+    int arr[12] = {9,1,-3,2,4,8,3,-1,6,-2,-4,7};
+    vector<int> nums(arr, arr + 12);
+    cout << sol.longestConsecutive(nums) << endl;
 }

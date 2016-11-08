@@ -5,7 +5,7 @@
 
 using namespace std;
 
-// `num1[i] * num2[j]` will be placed at indices `[i + j`, `i + j + 1]` 
+// `num1[i] * num2[j]` will be placed at indices `[i + j`, `i + j + 1]`
 
 class Solution {
     public:

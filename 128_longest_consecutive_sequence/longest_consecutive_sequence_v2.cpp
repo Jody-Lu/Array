@@ -14,8 +14,8 @@ class Solution {
                 record.erase(n);
                 int prev = n - 1;
                 int next = n + 1;
-                while(record.find(prev) != record.end()) record.erase(prev--);
-                while(record.find(next) != record.end()) record.erase(next++);
+                while(record.find(prev) != record.end()) { record.erase(prev--); }
+                while(record.find(next) != record.end()) { record.erase(next++); }
                 res = max(res, next - prev - 1);
             }
             return res;
