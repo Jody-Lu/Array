@@ -11,8 +11,9 @@ class TrieNode {
     	// Initialize your data structure here.
     	TrieNode *next[ALPHABET_SIZE];
         bool isWord;
-        
         TrieNode(bool b=false) {
+            // void * memset ( void * ptr, int value, size_t num );
+            // Sets the first num bytes of the block of memory pointed by ptr to the specified value
             memset(next, 0, sizeof(next));
             isWord = b;
     	}
@@ -90,13 +91,13 @@ class Trie {
                         return true;
                     }
                     // not empty, should not delete the node.
-                    return false; 
+                    return false;
                 }
                 else { // Recursive case
                     if(deleteHelper(pNode->next[key[level] - 'a'], key, level + 1, len)) {
                         // last node marked, delete it.
                         delete pNode->next[key[level] - 'a'];
-                        
+
                         // recursively climb up, and delete eligible node.
                         return ((!isLeafNode(pNode)) && isFreeNode(pNode));
                     }
