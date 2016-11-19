@@ -1,29 +1,29 @@
 class Solution {
 public:
-
-    Solution() {
-        num_dict = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-    }
-
     vector<string> letterCombinations(string digits) {
         vector<string> res;
-        if(digits.size() == 0) return res;
-        this -> digits = digits;
-        dfs("", 0, res);
+        // corner case
+        if(digits.size() == 0) { return res; }
+        numMap = {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        string s = "";
+        letterCombinationsHelper(res, digits, s, 0);
         return res;
     }
+private:
+    vector<string> numMap;
 
-    void dfs(string s, int level, vector<string> &res) {
-        if(s.size() == digits.size()) {
+    void letterCombinationsHelper(vector<string>& res, string& digits, string& s, int step) {
+        if(step >= digits.size()) {
             res.push_back(s);
             return;
         }
-        for(int i = 0; i < num_dict[digits[level] - '0'].size(); i++) {
-            string tmp = s + (num_dict[digits[level] - '0'][i]);
-            dfs(tmp, level + 1, res);
+
+        string chars = numMap[digits[step] - '0'];
+
+        for(char c : chars) {
+            s.push_back(c);
+            letterCombinationsHelper(res, digits, s, step + 1);
+            s.pop_back();
         }
     }
-private:
-    vector<string> num_dict;
-    string digits;
 };

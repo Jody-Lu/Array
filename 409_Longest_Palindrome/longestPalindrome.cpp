@@ -10,16 +10,23 @@ class Solution {
             if(s.size() == 0) return 0;
             map<char, int> counts;
             int res = 0;
-            for(int i = 0; i < s.size(); i++)
+            
+            for(int i = 0; i < s.size(); i++) {
                 counts[s[i]]++;
+            }
 
-            for(auto it = counts.begin(); it != counts.end(); it++)
+            for(auto it = counts.begin(); it != counts.end(); it++) {
                 // # (it -> first) is even, include all.
-                if(it->second % 2 == 0)
+                if(it->second % 2 == 0) {
                     res += it -> second;
+                }
                 // # (it -> first) is odd, include (all - 1).
-                else
+                else {
                     res += (it -> second) - 1;
+                }
+            }
+            // if res.size() < s.size(), then since we only choose even, we can choose
+            // one more character to construct an odd palindrome.
             return (res == s.size())? res : res + 1;
         }
 };

@@ -15,8 +15,6 @@ class Solution {
             if(begin < end) {
                 left = _mergeSort(nums, begin, mid);
                 right = _mergeSort(nums, mid+1, end);
-                //cout << left << " " << right << endl;
-                //cout << max(left + right, right) << endl; 
             }
             else return nums[begin];
             

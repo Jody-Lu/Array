@@ -21,6 +21,7 @@ class Solution {
                     string t = decodeString(s, i);
                     i++; // ']'
 
+                    // copy t for n times
                     while(n--) res += t;
                 }
             }

@@ -12,6 +12,8 @@ class Solution {
                     if(bitset<10>((h << 6) + m).count() == num) // (h << 6) to prevent bits overlapping.
                         res.emplace_back(to_string(h) + (m < 10? ":0" : ":") + to_string(m));
                 }
+
+            return res;
         }
 };
 

@@ -27,7 +27,7 @@ class Solution(object):
         :rtypr: int
         """
         def dfs_rob(root):
-            if not root: return 0,0
+            if not root: return 0, 0
             rob_L, no_rob_L = self.dfs_rob(root.left)
             rob_R, no_rob_R = self.dfs_rob(root.right)
 

@@ -14,9 +14,7 @@ class Solution {
                 x /= 10;
             }
 
-            if(res <= INT_MAX && res >= INT_MIN)
-                return sign * res;
-            else return 0;
+            return (res <= INT_MAX && res >= INT_MIN)? res * sign : 0;
 
     	}
 };

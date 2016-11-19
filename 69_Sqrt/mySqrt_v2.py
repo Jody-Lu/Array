@@ -8,6 +8,7 @@ class Solution(object):
             if sq == x: return mid
             if sq < x: begin = mid + 1
             else: end = mid - 1
+        
         first, last = 0.01, 0.99
 
         while first <= last:

@@ -9,20 +9,20 @@ class Solution {
         vector<vector<int> > permuteUnique(vector<int>& nums) {
             sort(nums.begin(), nums.end());
             vector<vector<int> > res;
-            dfs(nums, 0, nums.size(), res);
+            dfs(nums, 0, res);
             return res;
         }
     private:
-        void dfs(vector<int> num, int i, int j, vector<vector<int> > &res) {
-            if(i == j - 1) {
-                res.push_back(num);
+        void dfs(vector<int> nums, int start, vector<vector<int> > &res) {
+            if(start >= nums.size()) {
+                res.push_back(nums);
                 return;
             }
 
-            for(k = i; k < j; k++) {
-                if(i != k && num[i] == num[k]) continue;
-                swap(num[i], num[k]);
-                dfs(num, i + 1, j, res);
+            for(int i = start; i < nums.size(); i++) {
+                if(start != i && nums[start] == nums[i]) { continue; }
+                swap(nums[start], nums[i]);
+                dfs(nums, start + 1, res);
             }
         }
 };

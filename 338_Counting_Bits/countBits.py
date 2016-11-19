@@ -18,7 +18,7 @@ class Solution(object):
     def countBits_v2(self, num):
         """
         DP: 
-        1. If i must have the same #bit with i >> 1
+        1. If i is even, i must have the same #bit with i >> 1 (Since the last bit of i must be 0)
         2. If i is odd, its last bit must equal to 1 
         and #bits equal to #bit of i >> 1 + 1
         Ex: 5 --> 0, 1, 2, 3, 4, 5
@@ -35,6 +35,6 @@ class Solution(object):
         print res
 
 sol = Solution()
-num = 15
+num = 4
 print sol.countBits_v2(num)
 

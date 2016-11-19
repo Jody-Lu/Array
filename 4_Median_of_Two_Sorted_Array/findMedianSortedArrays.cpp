@@ -8,8 +8,8 @@ class Solution {
         double findMedianSortedArrays(vector<int>& A, vector<int>& B) {
             int m = A.size(), n = B.size();
             int l = (m + n + 1) >> 1;
-            int r = (m + n + 2) >> 2;
-            return (double)(findKth(A, 0, m, B, 0, n, l) + findKth(A, 0, m, B, 0, n, r)) / 2.0;
+            int r = (m + n + 2) >> 1;
+            return (double)(findKth(A, 0, m - 1, B, 0, n - 1, l) + findKth(A, 0, m - 1, B, 0, n - 1, r)) / 2.0;
         }
 
     private:
